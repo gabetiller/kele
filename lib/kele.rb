@@ -6,9 +6,8 @@ require './lib/roadmap.rb'
 class Kele
   include HTTParty
   include Roadmap
-  format :json
 
-  # base_uri 'https://www.bloc.io/api/v1'
+  base_uri 'https://www.bloc.io/api/v1'
 
   def initialize(email, password)
     @options = { query: { email: email, password: password } }
@@ -19,23 +18,27 @@ class Kele
 
   def get_me
     response = self.class.get(api_url("users/me"), headers: { "authorization" => @auth_token })
-    @user_data = JSON.parse(response.body)
-    @mentor_id = response['current_enrollment']['mentor_id']
+    user_data = JSON.parse(response.body)
+    @my_mentor_id = response['current_enrollment']['mentor_id']
     @roadmap_id = response['current_enrollment']['roadmap_id']
-    @user_data
+    @email = response['email']
+    user_data
   end
 
-  def get_mentor_availability
-    response = self.class.get(api_url("mentors/#{@mentor_id}/student_availability"), headers: { "authorization" => @auth_token })
-    @mentors_availability = JSON.parse(response.body)
+  def get_mentor_availability(mentor_id)
+    response = self.class.get(api_url("mentors/#{mentor_id}/student_availability"), headers: { "authorization" => @auth_token })
+    mentors_availability = JSON.parse(response.body)
   end
 
+  def get_my_mentors_availability
+    get_me unless @my_mentor_id
 
+    get_mentor_availability(@my_mentor_id)
+  end
 
   private
 
   def api_url(endpoint)
-    "https://www.bloc.io/api/v1/#{endpoint}"
+    "#{self.class.base_uri}/#{endpoint}"
   end
-
 end
