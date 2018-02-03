@@ -10,7 +10,7 @@ class Kele
   base_uri 'https://www.bloc.io/api/v1'
 
   def initialize(email, password)
-    @options = { query: { email: email, password: password } }
+    @options = { body: { "email": email, "password": password } }
     response = self.class.post(api_url("sessions"), @options)
       raise "Invalid email or password" if response.code == 404
       @auth_token = response["auth_token"]
