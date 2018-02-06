@@ -11,7 +11,7 @@ Kele is a Ruby Gem that allows users to access Bloc's REST API.
 - User can submit checkpoint assignments
 **Languages and Frameworks: Ruby on Rails and Bootstrap**
 
-###Development Tools and Gems:
+### Development Tools and Gems:
 
 - Ruby 2.4.1
 - HTTParty Gem
