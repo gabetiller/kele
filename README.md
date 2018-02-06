@@ -1,8 +1,8 @@
 # Kele
-## A Ruby API Client.   
+*A Ruby API Client.*   
 Kele is a Ruby Gem that allows users to access Bloc's REST API.
 
-# User Story
+### User Story
 - Kele retrieves and stores an authentication token when passed valid credentials
 - User can retrieve their info as a JSON blog
 - User can retrieve a list of their mentor's availability
@@ -11,13 +11,13 @@ Kele is a Ruby Gem that allows users to access Bloc's REST API.
 - User can submit checkpoint assignments
 **Languages and Frameworks: Ruby on Rails and Bootstrap**
 
-**Development Tools and Gems:**
+###Development Tools and Gems:
 
 - Ruby 2.4.1
 - HTTParty Gem
 - JSON Gem
 
-## To run locally:
+### To run locally:
 
 - Clone the repository
 - Run bundle install
