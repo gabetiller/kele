@@ -20,7 +20,8 @@ Kele is a Ruby Gem that allows users to access Bloc's REST API.
 ### To run locally:
 
 - Clone the repository
-- Run bundle install
+- Run bundle install   
+
 **or** Add this line to your application's Gemfile
 ```gem 'kele'```
 
